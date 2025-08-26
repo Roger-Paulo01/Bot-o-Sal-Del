@@ -20,21 +20,21 @@ namespace Notes
             string conteudo = CaixaEditor.Text;
             File.WriteAllText(caminho, conteudo);
 
-            DisplayAlert("Arquivo salvo", Path.GetFileName(conteudo) , caminho, "ok");
+            DisplayAlert("Salvar", $"O arquivo foi salvo em: {caminho}", "ok");
         }
 
         private void ApagarBtn_Clicked(object sender, EventArgs e)
         {
-            File.Delete(caminho);
+            CaixaEditor.Text = String.Empty;
            if (File.Exists(caminho))
             {
                 File.Delete(caminho);
-                CaixaEditor.Text = string.Empty;
+                DisplayAlert("Exclusão", "Arquivo apagado com sucesso", "ok");
             }
 
            else
            {
-                DisplayAlert("Arquivo não encontrado", "Não há arquivo para apagar", "OK");
+                DisplayAlert("Arquivo não encontrado", "Não há arquivo para APAGAR", "ok");
            }
            
         }
